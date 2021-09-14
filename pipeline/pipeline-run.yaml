@@ -3,11 +3,16 @@ kind: PipelineRun
 metadata:
   generateName: next-app-pipeline-run-
 spec:
+  serviceAccountName: pipeline-run-bot
   pipelineRef:
     name: next-app-pipeline
   params:
     - name: source-repo
       value: https://github.com/alexseymour1997/alex-jignesh-e2e.git
+    - name: image-repo
+      value: quay.io/alexander_seymour_ibm/alex-jignesh-e2e
+    - name: app-name
+      value: next-app-e2e
   workspaces:
     - name: pipeline-shared-data
       volumeClaimTemplate:
