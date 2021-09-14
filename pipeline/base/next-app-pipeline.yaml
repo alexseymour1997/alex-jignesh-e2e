@@ -20,3 +20,16 @@ spec:
       workspaces:
         - name: output
           workspace: pipeline-shared-data
+    - name: npm-run-test
+      runAfter:
+        - git-clone-repo
+      taskRef:
+        kind: Task
+        name: npm
+      params:
+        - name: ARGS
+          value:
+            - run test
+      workspaces:
+        - name: source
+          workspace: pipeline-shared-data
