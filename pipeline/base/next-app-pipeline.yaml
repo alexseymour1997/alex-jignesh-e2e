@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: next-app-pipeline
+spec:
+  workspaces:
+    - name: pipeline-shared-data
+  params:
+    - name: source-repo
+      type: string
+      description: Source code repository
+  tasks:
+    - name: git-clone-repo
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      params:
+        - name: url
+          value: "$(params.source-repo)"
+      workspaces:
+        - name: output
+          workspace: pipeline-shared-data

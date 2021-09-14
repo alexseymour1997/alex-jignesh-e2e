@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: next-app-pipeline-run-
+spec:
+  pipelineRef:
+    name: next-app-pipeline
+  params:
+    - name: source-repo
+      value: https://github.com/alexseymour1997/alex-jignesh-e2e.git
+  workspaces:
+    - name: pipeline-shared-data
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
