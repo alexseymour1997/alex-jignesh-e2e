@@ -22,7 +22,7 @@ export default function Home() {
         </p>
 
         <p className={styles.description}>
-          Deployed by Alex Seymour and Jignesh Panchal
+          Deployed by Alex Seymour and Jignesh Panchal V2
         </p>
 
         <div className={styles.grid}>
